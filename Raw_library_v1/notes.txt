@@ -1,0 +1,83 @@
+Gaussian Elimination
+
+some basic oparations on matrices:
+    1.interchanging two rows changes the sign of the determinant
+    2.multiplying a row by a scalar multiplies the determinant by that scalar
+    3.addition of a multiple of one row to another row does not change the determinant (IMP).
+    4.determinant of triangular matrix is the product of its diagonal elements.
+
+Gaussian Elimination:
+    1.reduce the matrix to an upper triangular form using row operations.
+    2.the determinant is the product of the diagonal elements, multiplied by any scalars used in row operations.
+
+How to make any matrix in to a upper triangular matrix:
+    (https://www.youtube.com/live/rrWm9W87wcI?app=desktop&t=127s)<-- source
+    1.start with the first row and use it to eliminate all entries below the leading entry (pivot) in that column.
+    2.move to the next row and repeat the process for the submatrix that excludes the rows and columns already processed.
+    3.continue this process until the entire matrix is in upper triangular form.
+
+    Note:- if pivot element is zero, we may need to interchange rows to get a non-zero pivot.
+            rule 1:- you can only interchange row only row below the current row.
+
+    how to element the entries:
+        Rx - x*Rp (where Rx is the row to be eliminated, Rp is the pivot row, and x is the factor to eliminate the entry).
+
+        x = entry/pivot
+
+
+
+
+There is a famous mathematical algorithm called the Box-Muller Transform. It turns "Flat Randomness" (Uniform) into "Bell Curve Randomness" (Gaussian).
+The Equations:Given two random numbers U1 and U2, uniformly distributed in the interval (0, 1], the Box-Muller transform produces two independent standard normally distributed random numbers Z0 and Z1 using the following equations:
+Z0 = sqrt(-2 * ln(U1)) * cos(2 * π * U2)
+Z1 = sqrt(-2 * ln(U1)) * sin(2 * π * U2)
+
+
+aasert()
+rand()
+srand()
+expf(-x)
+tanh() hyperbolic tangent
+
+int randomNumber = (rand() % (y - x + 1)) + x;
+
+
+i*(col)+j
+
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+
+int main(void){
+    srand(time(NULL));
+    printf("%d\n",rand());
+
+    printf("%f\n",(float)rand()/(float)RAND_MAX);
+
+    //random number between 11-19
+    printf("%d\n",rand() % (19-11) + 11);
+
+//    [0 1] * x = [0 x] + y = [y x+y];
+//    random float between x and y
+    int x=11;
+    int y=19;
+    float random = ((float)rand()/(float)RAND_MAX)*(y-x) + x;
+
+ 
+
+}	
+
+
+
+cofactor = (-1)^i+j Mij
+M--minor metrix
+
+
+The adjoint of a matrix is the transpose of its cofactor matrix
+
+
+
+

@@ -1,0 +1,44 @@
+//NEURAL NETWORK–RELATED TOOLS
+
+float relu_fn(float x) {
+    return x > 0 ? x : 0;
+}
+float sigmoid_fn(float x) {
+    return 1.0f / (1.0f + expf(-x));
+}
+float tanh_fn(float x) {
+    return tanh(x);    //its in math.h tanh is called hyperbolic tangent
+}
+matrix* softmax(matrix* a){
+    
+    int row = a->row;
+    int col = a->col;
+    if (col == 0) return NULL;
+    matrix* soft = new_matrix(row,col);
+
+    for(int i = 0; i < row;++i){
+        float sum = 0;
+        int index_base = i*col;
+        float max_row = a->value[index_base];
+        for(int j = 0;j < col; ++j){
+            int index = index_base + j;
+            if (a->value[index] > max_row ){
+                max_row = a->value[index];
+            }
+        }
+        //here we are substactin max value of that row (vector) to pervent it from overflowing because e^100 can go neer infinity
+        for(int j = 0;j < col; ++j){
+
+            int index = index_base + j;
+            soft->value[index] = expf(a->value[index] - max_row);
+            sum += soft->value[index];
+        }
+        for(int j = 0;j < col;++j){
+
+            int index = index_base + j;
+            soft->value[index] /= sum; 
+        }
+    }
+    return soft;
+
+}
